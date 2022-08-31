@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     if (!users.length) {
       next();
     } else {
-      next({ message: "username taken", status: 422 });
+      next({ message: "Username Taken", status: 422 });
     }
   } catch (err) {
     next(err);

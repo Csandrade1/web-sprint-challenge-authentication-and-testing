@@ -22,21 +22,21 @@ describe("server.js", () => {
     it("[1] posting to register creates a new user in database", async () => {
       await request(server)
         .post("/api/auth/register")
-        .send({ username: "Jimmy", password: "12345" });
-      const jimmy = await db("users").where("username", "Jimmy").first();
-      expect(jimmy).toMatchObject({ username: "Jimmy" });
+        .send({ username: "Cynthia", password: "1234" });
+      const jimmy = await db("users").where("username", "Cynthia").first();
+      expect(jimmy).toMatchObject({ username: "Cynthia" });
     }, 750);
     it("[2] saves user with bcrypted password", async () => {
       await request(server)
         .post("/api/auth/register")
-        .send({ username: "jane", password: "12345" });
-      const jane = await db("users").where("username", "jane").first();
-      expect(bcrypt.compareSync("12345", jane.password)).toBeTruthy();
+        .send({ username: "Silvia", password: "1234" });
+      const silvia = await db("users").where("username", "Silvia").first();
+      expect(bcrypt.compareSync("1234", silvia.password)).toBeTruthy();
     }, 750);
     it("[3] responds with proper status on successful registration", async () => {
       const res = await request(server)
         .post("/api/auth/register")
-        .send({ username: "johnny", password: "qwerty" });
+        .send({ username: "Marco", password: "hello123" });
       expect(res.status).toBe(201);
     }, 750);
   });
@@ -56,13 +56,13 @@ describe("server.js", () => {
     it("[6] correct status on valid credentials", async () => {
       const res = await request(server)
         .post("/api/auth/login")
-        .send({ username: "bib", password: "1234" });
+        .send({ username: "Valentina", password: "1234" });
       expect(res.status).toBe(401);
     }, 750);
     it("[7] correct message on invalid login", async () => {
       let res = await request(server)
         .post("/api/auth/login")
-        .send({ username: "blimp", password: "1234" });
+        .send({ username: "Andrew", password: "1234" });
       expect(res.body.message).toMatch(/invalid credentials/i);
     }, 750);
   });
