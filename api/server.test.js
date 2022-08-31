@@ -23,8 +23,8 @@ describe("server.js", () => {
       await request(server)
         .post("/api/auth/register")
         .send({ username: "Cynthia", password: "1234" });
-      const jimmy = await db("users").where("username", "Cynthia").first();
-      expect(jimmy).toMatchObject({ username: "Cynthia" });
+      const cynthia = await db("users").where("username", "Cynthia").first();
+      expect(cynthia).toMatchObject({ username: "Cynthia" });
     }, 750);
     it("[2] saves user with bcrypted password", async () => {
       await request(server)
