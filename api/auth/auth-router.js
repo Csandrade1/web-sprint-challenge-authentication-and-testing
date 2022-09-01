@@ -5,7 +5,7 @@ const Users = require("./model");
 const { BCRYPT_ROUNDS, JWT_SECRET } = require("../jwtSecret");
 const restricted = require("../middleware/restricted.js");
 const validateRegister = require("../middleware/validateRegister.js");
-const validateUserName = require("../middleware/validateUserName.js");
+const validateUserName = require("../middleware/validateUsername.js");
 const validateIfUsernameExists = require("../middleware/validateIfUsernameExists.js");
 
 router.post(
